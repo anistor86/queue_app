@@ -46,7 +46,7 @@ root folder and if everything was setup correctly, the app will run automaticall
 
 ![Alt text](http://lucastorani.it/form_submit/screenshot.jpg "Queue app Screenshot")
 
-You can see an up and running version [here](http://lucastorani.it/form_submit/){:target="_blank"}
+You can see an up and running version [here](http://lucastorani.it/form_submit/)
 
 
 ## Built With
