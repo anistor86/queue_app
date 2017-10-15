@@ -1,7 +1,5 @@
 /* For mobile phones: */
-[class="col-sm-6"] {
-    width: 100%;
-}
+
 @media only screen and (min-width: 600px) {
     /* For tablets: */
     .col-m-1 {width: 8.33%;}
