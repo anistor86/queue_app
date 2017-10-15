@@ -84,7 +84,7 @@
 								<!-- errors will go here -->
 							</div>
 							<div class="form-group col-sm-12 lista">
-								<button type="submit" class="btn btn-info">Submit <span class="fa fa-arrow-right"></span></button>
+								<button type="submit" class="btn btn-info">Submit</button>
 							</div>
 						</form>
 					</div>
@@ -106,7 +106,7 @@
 									<div class="col-xs-3 col-sm-3">Service</div>
 									<div class="col-xs-1 col-sm-1">Time</div>
 								</div>
-							<!-- retrieve data from db -->	
+							<!-- retrieve data from db -->
 							<?php
 								$sql = "SELECT * FROM queue_app";
 
