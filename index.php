@@ -2,15 +2,16 @@
 <!doctype html>
 <html>
 <head>
-	<title>Council Queue App</title>
+	<title>Simple Queue App</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> <!-- load bootstrap via CDN -->
 	<link rel="stylesheet" href="style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- load jquery via CDN -->
 	<script src="script.js"></script> <!-- load our javascript file -->
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-	<div class="container">
-		<h1>Council Queue App</h1>
+	<div class="container clearfix">
+		<h1>Small Queue App</h1>
 		<div class="col-sm-6">
 			<div class="panel panel-default">
         <div class="panel-heading col-sm-12">
@@ -84,7 +85,7 @@
 								<!-- errors will go here -->
 							</div>
 							<div class="form-group col-sm-12 lista">
-								<button type="submit" class="btn btn-info">Submit</button>
+								<button type="submit" class="btn btn-info">Submit <span class="fa fa-arrow-right"></span></button>
 							</div>
 						</form>
 					</div>
@@ -100,34 +101,34 @@
 						<div class="row">
 							<div class="col-sm-12" id="queue">
 								<div class="row head">
-									<div class="col-xs-1 col-sm-1">#</div>
-									<div class="col-xs-2 col-sm-2">Type</div>
-									<div class="col-xs-4 col-sm-4">Name</div>
-									<div class="col-xs-3 col-sm-3">Service</div>
-									<div class="col-xs-1 col-sm-1">Time</div>
+									<div class="col-xs-1 col-sm-1 text-center">#</div>
+									<div class="col-xs-3 col-sm-3">Type</div>
+									<div class="col-xs-3 col-sm-3">Name</div>
+									<div class="col-xs-2 col-sm-2">Service</div>
+									<div class="col-xs-1 col-sm-2 col-xs-offset-1">Time</div>
 								</div>
 							<!-- retrieve data from db -->
 							<?php
 								$sql = "SELECT * FROM queue_app";
 
-								$result = mysqli_query($conn, $sql);
+								$result = $conn->query($sql);
 
-								if (mysqli_num_rows($result) > 0) {
+								if ($result->num_rows > 0) {
 								    // output data of each row
 										$count = 1;
-								    while($row = mysqli_fetch_assoc($result)) {
+								    while($row = $result->fetch_assoc()	) {
 											if($row["type"] == "Anonymous" || $row["type"] == "Organisation"){
 												$row["title"] = "";
 												$row["last_name"] = "";
 											}
-											echo "<div class=\"row lista\"><div class=\"col-xs-1 col-sm-1\">" . $count . "</div><div class=\"col-xs-2 col-sm-2\">" . $row["type"] .
-											"</div><div class=\"col-xs-4 col-sm-4\">" . $row["title"] . " " . $row["first_name"] . " " . $row["last_name"] .
-											"</div><div class=\"col-xs-3 col-sm-3\">" .	$row["services"] . "</div><div class=\"col-xs-1 col-sm-1\">" .
+											echo "<div class=\"row lista\"><div class=\"col-xs-1 col-sm-1 text-center\">" . $count . "</div><div class=\"col-xs-3 col-sm-3\">" . $row["type"] .
+											"</div><div class=\"col-xs-3 col-sm-3\">" . $row["title"] . " " . $row["first_name"] . " " . $row["last_name"] .
+											"</div><div class=\"col-xs-2 col-sm-2\">" .	$row["services"] . "</div><div class=\"col-xs-1 col-sm-2 col-xs-offset-1\">" .
 											substr($row["time_reg"], 0, 5) . "</div></div>";
 											$count++;
 										}
 								}
-								mysqli_close($conn);
+								$conn->close();
 							?>
 						</div>
 					</div>
