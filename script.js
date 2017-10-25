@@ -1,6 +1,23 @@
-// magic.js
 
 $(document).ready(function() {
+
+	//reset function
+	$.fn.resetFunction = function(){
+		$('input[name=firstname]').val('');
+		$('input[name=firstname]').val('');
+		$('input[name=servicesGroup]').prop('checked', false);
+		$('a[data-toggle="typeGroup"][data-title="Citizen"]').removeClass('active').addClass('notActive');
+		$('a[data-toggle="typeGroup"][data-title="Organisation"]').removeClass('active').addClass('notActive');
+		$('a[data-toggle="typeGroup"][data-title="Anonymous"]').removeClass('active').addClass('notActive');
+		$('#firstname-field').show();
+		$('#title-group').show();
+		$('#lastname-field').show();
+		$('label[for=firstname]').text('First Name');
+		$('input[name=firstname]').attr('placeholder', 'First Name');
+		$('input[name=firstname]').val('');
+		$('input[name=lastname]').val('');
+  };
+
 	//toggle button
 	$('#radioBtn a').on('click', function(){
 			$('#mess').remove();
@@ -18,7 +35,7 @@ $(document).ready(function() {
 						$('#lastname-field').hide();
 						$('input[name=lastname]').val('#');
 						$('#title-group').hide();
-						$('input[name=firstname]').attr("placeholder", "");
+						$('input[name=firstname]').attr('placeholder', '');
 						break;
 				case "Organisation":
 						$('#firstname-field').show();
@@ -27,7 +44,7 @@ $(document).ready(function() {
 						$('#lastname-field').hide();
 						$('input[name=lastname]').val('#');
 						$('input[name=firstname]').val('');
-						$('input[name=firstname]').attr("placeholder", "Organisation");
+						$('input[name=firstname]').attr('placeholder', 'Organisation');
 						break;
 				case "Citizen":
 						$('#firstname-field').show();
@@ -36,10 +53,9 @@ $(document).ready(function() {
 						$('label[for=firstname]').text('First Name');
 						$('input[name=firstname]').val('');
 						$('input[name=lastname]').val('');
-						$('input[name=firstname]').attr("placeholder", "First Name");
+						$('input[name=firstname]').attr('placeholder', 'First Name');
 						break;
 			}
-
 
 	})
 
@@ -122,13 +138,14 @@ $(document).ready(function() {
 						data.title_group = "";
 						data.last_name = "";
 					}
+
+					$.fn.resetFunction();
+
+					//add last row to the list
 					$('#queue').append('<div class="row lista"><div class="col-xs-1 col-sm-1 text-center">' + data.count + '</div><div class="col-xs-3 col-sm-3">' + data.type +
 					'</div><div class="col-xs-3 col-sm-3">' + data.title_group + ' ' + data.first_name + ' ' + data.last_name +
 					'</div><div class="col-xs-2 col-sm-2">' +	data.services + '</div><div class="col-xs-1 col-sm-2 col-xs-offset-1">' + (data.time_reg).substr(0,5) + '</div></div>');
 
-
-					// usually after form submission, you'll want to redirect
-					// window.location = '/thank-you'; // redirect a user to another page
 
 				}
 			})
