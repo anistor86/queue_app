@@ -41,9 +41,11 @@ $data 			= array(); 		// array to pass back data
 
 		$sql = "INSERT INTO queue_app (services, type, title, first_name, last_name, time_reg) VALUES ('$services', '$type', '$title_group', '$first_name' ,'$last_name', '$time_reg')";
 
-		if (mysqli_query($conn, $sql)) {
-				$result = mysqli_query($conn, "SELECT * FROM queue_app");
-				$count = mysqli_num_rows($result);
+		//$result = $conn->query($sql);
+
+		if ($conn->query($sql) === TRUE) {
+			  $result_select = $conn->query("SELECT * FROM queue_app");
+				$count = $result_select->num_rows;
 
 				$data['success'] = true;
 				$data['message'] = 'Success!';
@@ -60,7 +62,7 @@ $data 			= array(); 		// array to pass back data
 				$data['success'] = false;
 				$data['errors']  = $errors;
 		}
-		mysqli_close($conn);
+		$conn->close();
 	}
 	// return all our data to an AJAX call
 

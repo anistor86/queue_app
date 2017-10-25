@@ -122,9 +122,9 @@ $(document).ready(function() {
 						data.title_group = "";
 						data.last_name = "";
 					}
-					$('#queue').append('<div class="row lista"><div class="col-xs-1 col-sm-1">' + data.count + '</div><div class="col-xs-2 col-sm-2">' + data.type +
-					'</div><div class="col-xs-4 col-sm-4">' + data.title_group + ' ' + data.first_name + ' ' + data.last_name +
-					'</div><div class="col-xs-3 col-sm-3">' +	data.services + '</div><div class="col-xs-1 col-sm-1">' + (data.time_reg).substr(0,5) + '</div></div>');
+					$('#queue').append('<div class="row lista"><div class="col-xs-1 col-sm-1 text-center">' + data.count + '</div><div class="col-xs-3 col-sm-3">' + data.type +
+					'</div><div class="col-xs-3 col-sm-3">' + data.title_group + ' ' + data.first_name + ' ' + data.last_name +
+					'</div><div class="col-xs-2 col-sm-2">' +	data.services + '</div><div class="col-xs-1 col-sm-2 col-xs-offset-1">' + (data.time_reg).substr(0,5) + '</div></div>');
 
 
 					// usually after form submission, you'll want to redirect
