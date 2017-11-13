@@ -39,7 +39,11 @@ $data 			= array(); 		// array to pass back data
 		$last_name = mysqli_real_escape_string($conn, trim($_POST['lastname']));
 		$time_reg = date('H:i:s');
 
-		$sql = "INSERT INTO queue_app (services, type, title, first_name, last_name, time_reg) VALUES ('$services', '$type', '$title_group', '$first_name' ,'$last_name', '$time_reg')";
+		$sql = "INSERT INTO queue_app ";
+		$sql .= "(services, type, title, first_name, last_name, time_reg) ";
+		$sql .= "VALUES ('$services', '$type', '$title_group', '$first_name' ,'$last_name', '$time_reg')";
+
+
 
 		//$result = $conn->query($sql);
 
