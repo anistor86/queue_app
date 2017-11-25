@@ -47,9 +47,9 @@ $data 			= array(); 		// array to pass back data
 
 		//$result = $conn->query($sql);
 
-		if ($conn->query($sql) === TRUE) {
-			  $result_select = $conn->query("SELECT * FROM queue_app");
-				$count = $result_select->num_rows;
+		if (mysqli_query($conn, $sql)) {
+				$result = mysqli_query($conn, "SELECT * FROM queue_app");
+				$count = mysqli_num_rows($result);
 
 				$data['success'] = true;
 				$data['message'] = 'Success!';
